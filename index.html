@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft Order Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Draft Order Generator</h1>
+        <form id="team-form">
+            <input type="text" id="team1" placeholder="Team 1" required>
+            <input type="text" id="team2" placeholder="Team 2" required>
+            <input type="text" id="team3" placeholder="Team 3" required>
+            <input type="text" id="team4" placeholder="Team 4" required>
+            <button type="button" onclick="generateDraftOrder()">Generate Draft Order</button>
+        </form>
+        <ul id="draft-order"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

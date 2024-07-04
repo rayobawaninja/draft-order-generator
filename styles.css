@@ -10,7 +10,7 @@ body {
 
 .top-bar {
     width: 100%;
-    background-color: #b30000; /* Nixor College red color */
+    background-color: #1a73e8;
     padding: 20px 0;
     text-align: center;
     color: white;
@@ -45,7 +45,7 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color: #b30000; /* Nixor College red color */
+    background-color: #1a73e8;
     color: white;
     border: none;
     border-radius: 5px;
@@ -55,7 +55,7 @@ button {
 }
 
 button:hover {
-    background-color: #cc0000; /* Slightly lighter red for hover effect */
+    background-color: #0f5bb5;
 }
 
 ul {
@@ -72,5 +72,5 @@ li {
 h2 {
     font-size: 22px;
     margin-bottom: 20px;
-    color: #b30000; /* Nixor College red color */
+    color: #1a73e8;
 }

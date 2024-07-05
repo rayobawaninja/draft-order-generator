@@ -49,6 +49,7 @@ function generateDraftOrder() {
 
         loadingSpinner.style.display = 'none';
         triggerConfetti();
+        showFloatingNames(shuffledTeams);
     }, 1000);
 }
 
@@ -59,4 +60,20 @@ function triggerConfetti() {
         origin: { y: 0.6 },
         colors: ['#bb0000', '#ffffff']
     });
+}
+
+function showFloatingNames(names) {
+    const floatingNamesContainer = document.getElementById('floating-names');
+    floatingNamesContainer.innerHTML = '';
+
+    names.forEach(name => {
+        const nameElement = document.createElement('div');
+        nameElement.textContent = name;
+        nameElement.classList.add('float-up');
+        floatingNamesContainer.appendChild(nameElement);
+    });
+
+    setTimeout(() => {
+        floatingNamesContainer.innerHTML = '';
+    }, 3000);
 }

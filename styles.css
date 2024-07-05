@@ -1,72 +1,67 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-image: url('PHOTO-2024-07-04-23-36-21.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    opacity: 0.9;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+(function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+
+function generateDraftOrder() {
+    const loadingSpinner = document.getElementById('loading');
+    loadingSpinner.style.display = 'block';
+
+    setTimeout(() => {
+        const teams = [
+            document.getElementById('team1').value,
+            document.getElementById('team2').value,
+            document.getElementById('team3').value,
+            document.getElementById('team4').value
+        ];
+
+        if (teams.some(team => team === '')) {
+            alert('Please enter all team names.');
+            loadingSpinner.style.display = 'none';
+            return;
+        }
+
+        const shuffledTeams = teams.sort(() => Math.random() - 0.5);
+        const draftOrderList = document.getElementById('draft-order');
+        draftOrderList.innerHTML = '';
+
+        shuffledTeams.forEach((team, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${index + 1}. ${team}`;
+            listItem.classList.add('list-group-item', 'fade-in');
+            draftOrderList.appendChild(listItem);
+        });
+
+        loadingSpinner.style.display = 'none';
+        triggerConfetti();
+    }, 1000);
 }
 
-.navbar {
-    width: 100%;
-    background-color: #b30000;
-}
-
-.container {
-    margin-top: 50px;
-}
-
-.card {
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-}
-
-.card-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.form-control {
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.btn {
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.list-group-item {
-    border: none;
-    border-bottom: 1px solid #ddd;
-}
-
-.list-group-item:last-child {
-    border-bottom: none;
-}
-
-h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #b30000;
-}
-
-#loading {
-    margin-top: 20px;
-    display: none;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.fade-in {
-    animation: fadeIn 1s ease-in-out;
+function triggerConfetti() {
+    const confetti = new mojs.Burst({
+        radius: { 0: 200 },
+        count: 20,
+        children: {
+            shape: 'circle',
+            radius: 20,
+            fill: ['#FFD700', '#FF4500', '#00FF00'],
+            duration: 2000
+        }
+    });
+    confetti.play();
 }

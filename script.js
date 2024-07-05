@@ -18,6 +18,9 @@
         })
 })()
 
+let currentIndex = 0;
+let shuffledTeams = [];
+
 function generateDraftOrder() {
     const loadingSpinner = document.getElementById('loading');
     loadingSpinner.style.display = 'block';
@@ -36,7 +39,7 @@ function generateDraftOrder() {
             return;
         }
 
-        const shuffledTeams = teams.sort(() => Math.random() - 0.5);
+        shuffledTeams = teams.sort(() => Math.random() - 0.5);
         const draftOrderList = document.getElementById('draft-order');
         draftOrderList.innerHTML = '';
 
@@ -48,9 +51,25 @@ function generateDraftOrder() {
         });
 
         loadingSpinner.style.display = 'none';
-        triggerConfetti();
-        showFloatingNames(shuffledTeams);
+        currentIndex = 0;
+        showNextName();
     }, 1000);
+}
+
+function showNextName() {
+    const floatingNamesContainer = document.getElementById('floating-names');
+    const nextButton = document.getElementById('next-button');
+
+    if (currentIndex < shuffledTeams.length) {
+        floatingNamesContainer.textContent = `${currentIndex + 1}ST TEAM IS ${shuffledTeams[currentIndex]}`;
+        floatingNamesContainer.classList.add('fade-in');
+        currentIndex += 1;
+        nextButton.style.display = 'block';
+    } else {
+        floatingNamesContainer.textContent = '';
+        nextButton.style.display = 'none';
+        triggerConfetti();
+    }
 }
 
 function triggerConfetti() {
@@ -60,20 +79,4 @@ function triggerConfetti() {
         origin: { y: 0.6 },
         colors: ['#bb0000', '#ffffff']
     });
-}
-
-function showFloatingNames(names) {
-    const floatingNamesContainer = document.getElementById('floating-names');
-    floatingNamesContainer.innerHTML = '';
-
-    names.forEach(name => {
-        const nameElement = document.createElement('div');
-        nameElement.textContent = name;
-        nameElement.classList.add('float-up');
-        floatingNamesContainer.appendChild(nameElement);
-    });
-
-    setTimeout(() => {
-        floatingNamesContainer.innerHTML = '';
-    }, 3000);
 }

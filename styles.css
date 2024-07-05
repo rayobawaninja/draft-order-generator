@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('https://scontent.fkhi17-1.fna.fbcdn.net/v/t39.30808-6/253047461_10159697473238945_6826171000821219777_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFHUlTh7D2h0t-WIoZdzVftyV85rxTZdp_JXzmvFNl2n_uZ-F3bE4oL3yC-JnEy2OzqDzCVMpaAOKHFWtaRBY3q&_nc_ohc=UprxiLtGWEEQ7kNvgFTGC4x&_nc_ht=scontent.fkhi17-1.fna&oh=00_AYDfhYjxa-30PsfvDJzMfyvePUk5_mlc-v02Ls_ktRl6Aw&oe=668E2364');
+    background-image: url('PHOTO-2024-07-04-23-36-21.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,6 +55,11 @@ h2 {
     font-size: 22px;
     margin-bottom: 20px;
     color: #b30000;
+}
+
+#loading {
+    margin-top: 20px;
+    display: none;
 }
 
 @keyframes fadeIn {

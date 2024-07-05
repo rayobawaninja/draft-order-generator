@@ -38,7 +38,7 @@ function generateDraftOrder() {
     shuffledTeams.forEach((team, index) => {
         const listItem = document.createElement('li');
         listItem.textContent = `${index + 1}. ${team}`;
-        listItem.classList.add('list-group-item');
+        listItem.classList.add('list-group-item', 'fade-in');
         draftOrderList.appendChild(listItem);
     });
 }

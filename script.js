@@ -53,15 +53,10 @@ function generateDraftOrder() {
 }
 
 function triggerConfetti() {
-    const confetti = new mojs.Burst({
-        radius: { 0: 200 },
-        count: 20,
-        children: {
-            shape: 'circle',
-            radius: 20,
-            fill: ['#FFD700', '#FF4500', '#00FF00'],
-            duration: 2000
-        }
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#bb0000', '#ffffff']
     });
-    confetti.play();
 }

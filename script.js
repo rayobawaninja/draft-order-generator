@@ -19,26 +19,49 @@
 })()
 
 function generateDraftOrder() {
-    const teams = [
-        document.getElementById('team1').value,
-        document.getElementById('team2').value,
-        document.getElementById('team3').value,
-        document.getElementById('team4').value
-    ];
+    const loadingSpinner = document.getElementById('loading');
+    loadingSpinner.style.display = 'block';
 
-    if (teams.some(team => team === '')) {
-        alert('Please enter all team names.');
-        return;
-    }
+    setTimeout(() => {
+        const teams = [
+            document.getElementById('team1').value,
+            document.getElementById('team2').value,
+            document.getElementById('team3').value,
+            document.getElementById('team4').value
+        ];
 
-    const shuffledTeams = teams.sort(() => Math.random() - 0.5);
-    const draftOrderList = document.getElementById('draft-order');
-    draftOrderList.innerHTML = '';
+        if (teams.some(team => team === '')) {
+            alert('Please enter all team names.');
+            loadingSpinner.style.display = 'none';
+            return;
+        }
 
-    shuffledTeams.forEach((team, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${index + 1}. ${team}`;
-        listItem.classList.add('list-group-item', 'fade-in');
-        draftOrderList.appendChild(listItem);
+        const shuffledTeams = teams.sort(() => Math.random() - 0.5);
+        const draftOrderList = document.getElementById('draft-order');
+        draftOrderList.innerHTML = '';
+
+        shuffledTeams.forEach((team, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${index + 1}. ${team}`;
+            listItem.classList.add('list-group-item', 'fade-in');
+            draftOrderList.appendChild(listItem);
+        });
+
+        loadingSpinner.style.display = 'none';
+        triggerConfetti();
+    }, 1000);
+}
+
+function triggerConfetti() {
+    const confetti = new mojs.Burst({
+        radius: { 0: 200 },
+        count: 20,
+        children: {
+            shape: 'circle',
+            radius: 20,
+            fill: ['#FFD700', '#FF4500', '#00FF00'],
+            duration: 2000
+        }
     });
+    confetti.play();
 }

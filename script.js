@@ -23,6 +23,7 @@ let shuffledTeams = [];
 
 function generateDraftOrder() {
     const loadingSpinner = document.getElementById('loading');
+    const mainContent = document.getElementById('main-content');
     loadingSpinner.style.display = 'block';
 
     setTimeout(() => {
@@ -51,6 +52,7 @@ function generateDraftOrder() {
         });
 
         loadingSpinner.style.display = 'none';
+        mainContent.classList.add('hidden');
         currentIndex = 0;
         showNextName();
     }, 1000);
@@ -69,6 +71,7 @@ function showNextName() {
         floatingNamesContainer.textContent = '';
         nextButton.style.display = 'none';
         triggerConfetti();
+        document.getElementById('main-content').classList.remove('hidden');
     }
 }
 

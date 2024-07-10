@@ -24,6 +24,7 @@ let shuffledTeams = [];
 function generateDraftOrder() {
     const loadingSpinner = document.getElementById('loading');
     const mainContent = document.getElementById('main-content');
+    const body = document.querySelector('body');
     loadingSpinner.style.display = 'block';
 
     setTimeout(() => {
@@ -53,6 +54,7 @@ function generateDraftOrder() {
 
         loadingSpinner.style.display = 'none';
         mainContent.classList.add('hidden');
+        body.classList.add('no-bg');
         currentIndex = 0;
         showNextName();
     }, 1000);
@@ -64,14 +66,16 @@ function showNextName() {
 
     if (currentIndex < shuffledTeams.length) {
         floatingNamesContainer.textContent = `${currentIndex + 1}ST TEAM IS ${shuffledTeams[currentIndex]}`;
-        floatingNamesContainer.classList.add('fade-in');
+        floatingNamesContainer.classList.remove('hidden');
+        floatingNamesContainer.classList.add('fade-in', 'moveToFront');
+        triggerConfetti();
         currentIndex += 1;
         nextButton.style.display = 'block';
     } else {
         floatingNamesContainer.textContent = '';
         nextButton.style.display = 'none';
-        triggerConfetti();
         document.getElementById('main-content').classList.remove('hidden');
+        document.querySelector('body').classList.remove('no-bg');
     }
 }
 
@@ -80,6 +84,6 @@ function triggerConfetti() {
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#bb0000', '#ffffff']
+        colors: ['#0f018c', '#ffffff']
     });
 }

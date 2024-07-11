@@ -65,7 +65,7 @@ function showNextName() {
     const nextButton = document.getElementById('next-button');
 
     if (currentIndex < shuffledTeams.length) {
-        floatingNamesContainer.textContent = `${getOrdinal(currentIndex + 1)} PICK IS ${shuffledTeams[currentIndex]}`;
+        floatingNamesContainer.textContent = `${getOrdinal(currentIndex + 1)} PICK GOES TO ${shuffledTeams[currentIndex]}`;
         floatingNamesContainer.classList.remove('hidden');
         floatingNamesContainer.classList.add('fade-in', 'moveToFront');
         triggerConfetti();

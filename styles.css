@@ -90,13 +90,13 @@ h2 {
     align-items: center;
     justify-content: center;
     font-size: 5em;
-    color: darkgoldenrod;
+    color: black;
     text-align: center;
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     animation: fadeIn 1s ease-in-out, moveToFront 1s ease-in-out;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    -webkit-text-stroke: 1px black;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke: 1px white;
 }
 
 #next-button {

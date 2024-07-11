@@ -65,7 +65,7 @@ function showNextName() {
     const nextButton = document.getElementById('next-button');
 
     if (currentIndex < shuffledTeams.length) {
-        floatingNamesContainer.textContent = `${currentIndex + 1}ST PICK IS ${shuffledTeams[currentIndex]}`;
+        floatingNamesContainer.textContent = `${getOrdinal(currentIndex + 1)} PICK IS ${shuffledTeams[currentIndex]}`;
         floatingNamesContainer.classList.remove('hidden');
         floatingNamesContainer.classList.add('fade-in', 'moveToFront');
         triggerConfetti();
@@ -77,6 +77,12 @@ function showNextName() {
         document.getElementById('main-content').classList.remove('hidden');
         document.querySelector('body').classList.remove('no-bg');
     }
+}
+
+function getOrdinal(n) {
+    const s = ["th", "st", "nd", "rd"],
+        v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 function triggerConfetti() {
